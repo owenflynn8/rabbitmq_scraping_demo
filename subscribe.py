@@ -26,13 +26,10 @@ def scrape_function(director):
     url = "http://www.imdb.com/chart/top"
     content = urlopen(url).read() # source code of the web page you want to scrape
     soup = BeautifulSoup(content,"html.parser") # definition of beautiful soup parser 
-
     container = soup.find_all('a', {'title': re.compile(director)}) 
    
-    i = 0
-
     # this section of the code just grabs just the names of the movies
-    for i in range(len(container)):
+    for i in range(0,len(container)):
         newDirector = director.replace("*","")
         movie = container[i].text 
         data_entry(newDirector,movie)
